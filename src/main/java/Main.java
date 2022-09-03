@@ -6,10 +6,10 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args)  {
-        Connection conn = ConnectionUtil.getConnection();
+    public static void main(String[] args) throws SQLException {
+        Connection connection = ConnectionUtil.getConnection();
         Scanner ab = new Scanner(System.in);
-//        CoffeeService drinkService = new CoffeeService();
+        CoffeeService drinkService = new CoffeeService();
         boolean HaveCoffee = true;
         while (HaveCoffee) {
             System.out.println("WHAT CAN I GET YOU: ( hot coffee , iced  coffee, exit )");

@@ -1,9 +1,10 @@
 package Entity;
 
 public class Coffee {
-    public int id;
-    public String name;
-    public String description;
+
+    private int id;
+    private String name;
+    private String description;
 
 
 
