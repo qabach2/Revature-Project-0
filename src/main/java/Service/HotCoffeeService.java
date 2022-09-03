@@ -1,44 +1,45 @@
 package Service;
 
-import Entity.Coffee;
-import Repositories.CoffeeRepository;
+
+import Repositories.HotCoffeeRepository;
 import Util.ConnectionUtil;
 
-import java.awt.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class CoffeeService {
-    CoffeeRepository cr;
+public class HotCoffeeService {
+    HotCoffeeRepository hcr;
 
     Connection conn = ConnectionUtil.getConnection();
 
-    public CoffeeService() {
+    public HotCoffeeService() {
 
     }
 
-    public void CoffeeRepository() throws SQLException {
-        cr = new CoffeeRepository();}
+    public void HotCoffeeRepository() throws SQLException {
+        hcr = new HotCoffeeRepository();}
 
-    public CoffeeService( CoffeeRepository cr) throws SQLException {
-        this.cr = cr;
+    public HotCoffeeService( HotCoffeeRepository hcr) throws SQLException {
+        this.hcr = hcr;
 
        }
 //
 
-    public void removeCoffeeById( int id ){
+    public boolean removeHotCoffeeById(){
 
+        return false;
     }
-    public void updateCoffeeByName( String name){
-
+    public boolean updateHotCoffeeByName(){
+        return false;
     }
-    public void addCoffeeById(int id ){
-
+    public boolean addHotCoffeeByName(){
+       return false;
     }
-    public void getAllPaintingsByCoffeeName(String name){
+    public static boolean getAllHotCoffeesByCoffeeName(){
 
 
-   }
+        return false;
+    }
 
 
 //    public void addCoffee(String name, int id) throws SQLException {
