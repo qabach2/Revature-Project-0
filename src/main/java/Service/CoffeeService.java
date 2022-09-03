@@ -12,6 +12,11 @@ public class CoffeeService {
     CoffeeRepository cr;
 
     Connection conn = ConnectionUtil.getConnection();
+
+    public CoffeeService() {
+
+    }
+
     public void CoffeeRepository() throws SQLException {
         cr = new CoffeeRepository();}
 

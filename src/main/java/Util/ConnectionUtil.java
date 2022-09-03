@@ -13,11 +13,14 @@ public class ConnectionUtil {
                 String url = "jdbc:sqlserver://localhost:1433;TrustServerCertificate=True";
                 String username = "sa";
                 String password ="P@SSWORD123";
-                conn = DriverManager.getConnection(url, username, password);
+                conn= DriverManager.getConnection(url, username, password);
             }catch (SQLException e){
+                System.out.println("there is an error");
                 e.printStackTrace();
             }
         }
         return conn;
+
+
     }
 }
