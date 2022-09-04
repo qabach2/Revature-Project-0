@@ -1,3 +1,5 @@
+import Entity.HotCoffee;
+import Entity.IcedCoffee;
 import Service.HotCoffeeService;
 import Service.IcedCoffeeService;
 import Util.ConnectionUtil;
@@ -12,7 +14,7 @@ public class MainMenu {
 
         HotCoffeeService hotCoffeeService = new HotCoffeeService();
         IcedCoffeeService icedCoffeeService = new IcedCoffeeService();
-
+//        IcedCoffee icedCoffee =new IcedCoffee(2,"ice coffee","medium");
         boolean HaveCoffee = true;
         while (HaveCoffee) {
             System.out.println("SELECT ONE: ( all coffees ,  add coffee, remove coffee, update coffee ,exit )");
@@ -22,7 +24,7 @@ public class MainMenu {
                 System.out.println("hot coffees, iced coffees");
                 UserInput = ab.nextLine();
                 if (UserInput.equals("hot Coffees")){
-                    System.out.println(HotCoffeeService.getAllHotCoffeesByCoffeeName());
+                    System.out.println(hotCoffeeService.getAllHotCoffees());
                 }else if (UserInput.equals("iced coffees")) {
                     System.out.println(IcedCoffeeService.getAllIcedCoffeesByCoffeeName());
                 }}
@@ -31,7 +33,14 @@ public class MainMenu {
                 System.out.println("hot coffees, iced coffees");
                 UserInput = ab.nextLine();
                 if (UserInput.equals("hot Coffees")){
-                    hotCoffeeService.addHotCoffeeByName();
+                    System.out.println("please add the name");
+                   String UserInputName =ab.nextLine();
+                    System.out.println("please add discription");
+                    String UserInputDescription =ab.nextLine();
+                    System.out.println("please add id");
+                    int UserInputId = Integer.parseInt(ab.nextLine());
+                    HotCoffee hotCoffee = new HotCoffee(UserInputId,UserInputName,UserInputDescription);
+                    hotCoffeeService.addHotCoffee(hotCoffee);
                 }else if (UserInput.equals("iced coffees")) {
                     IcedCoffeeService.addIcedCoffeeByName();
             }}
@@ -39,7 +48,9 @@ public class MainMenu {
                 System.out.println("hot coffees, iced coffees");
                 UserInput = ab.nextLine();
                 if (UserInput.equals("hot Coffees")){
-                    hotCoffeeService.removeHotCoffeeById();
+                    System.out.println("please add id");
+                    int UserInputId = Integer.parseInt(ab.nextLine());
+                    hotCoffeeService.removeHotCoffeeById(UserInputId);
                 }else if (UserInput.equals("iced coffees")) {
                     IcedCoffeeService.removeIcedCoffeeById();
                 }}
@@ -48,7 +59,15 @@ public class MainMenu {
                 System.out.println("hot coffees, iced coffees");
                 UserInput = ab.nextLine();
                 if (UserInput.equals("hot Coffees")){
-                    hotCoffeeService.updateHotCoffeeByName();
+                    System.out.println("please add the name");
+                    String UserInputName =ab.nextLine();
+                    System.out.println("please add name");
+                    String UserInputDescription =ab.nextLine();
+                    System.out.println("please add id");
+                    int UserInputId = Integer.parseInt(ab.nextLine());
+                    HotCoffee hotCoffee = new HotCoffee(UserInputId,UserInputName,UserInputDescription);
+
+                    hotCoffeeService.updateHotCoffeeById(hotCoffee);
                 }else if (UserInput.equals("iced coffees")) {
                     IcedCoffeeService.updateIcedCoffeeById();
                 }}

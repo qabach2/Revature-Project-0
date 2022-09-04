@@ -27,50 +27,55 @@ public class HotCoffeeRepository {
         }
         return allHotCoffees;
     }
-//    public List<HotCoffee> getAllPaintingsByArtistID(int id){
-//        List<HotCoffee> paintings = new ArrayList<>();
-//        try{
-//            PreparedStatement statement = conn.prepareStatement("Select * from Painting where artistID = ?");
-////            parameterindexes start from 1 and go in order of the '?' in the sql string
-//            statement.setInt(1, id);
-//            ResultSet rs = statement.executeQuery();
-//            while(rs.next()){
-//                HotCoffee loadedCoffee = new HotCoffee((rs.getInt("id")),(rs.getString("name")),(rs.getString("description")));
-//                HotCoffee.add(loadedHotCoffee);
-//            }
-//        }catch(SQLException e){
-//            e.printStackTrace();
-//        }
-//        if(HotCoffee.size() == 0){
-//            return HotCoffee;
-//        }else{
-//            return HotCoffee;
-//        }
-//
-//    }
-//    public void addCoffee(HotCoffee hc){
-//        try{
-//            PreparedStatement statement = conn.prepareStatement("insert into HotCoffee(id, HotCoffeeID) " +
-//                    "values (?, ?)");
-//            statement.setString(1, hc.getId());
-//            statement.setInt(2, hc.getHotCoffeeID());
-//            statement.executeUpdate();
-//        }catch(SQLException e){
-//            e.printStackTrace();
-//        }
-//    }
-//    public HotCoffee getHotCoffeeByTitle(String title){
-//        try{
-//            PreparedStatement statement = conn.prepareStatement("select * from Painting where title = ?");
-//            statement.setString(1, title);
-//            ResultSet rs = statement.executeQuery();
-//            while(rs.next()){
-//                HotCoffee loadedCoffee = new HotCoffee((rs.getInt("id")),(rs.getString("name")),(rs.getString("description")));
-//                return rs;
-//            }
-//        }catch(SQLException e){
-//
-//        }
-//        return null;
+
+    public HotCoffee getAllHotCoffeesById(int id) {
+        HotCoffee loadedHotCoffee = null;
+        try{
+           PreparedStatement statement = conn.prepareStatement("Select * from HotCoffee where id = ?");
+           statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+            loadedHotCoffee = new HotCoffee((rs.getInt("id")),(rs.getString("name")),(rs.getString("description")));
+        }catch(SQLException e){
+            e.printStackTrace();
+
+    }
+        return loadedHotCoffee;
     }
 
+    public void removeHotCoffeeById(int id ){
+        try{
+            PreparedStatement statement = conn.prepareStatement("Delete * from HotCoffee where id = ?");
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+        }catch(SQLException e){
+            e.printStackTrace();
+    }}
+    public void addHotCoffee(HotCoffee hotCoffee){
+
+        try{
+            PreparedStatement statement = conn.prepareStatement("insert into HotCoffee(id, name, description) " +
+                    "values (?, ?, ?)");
+            statement.setInt(1,hotCoffee.getId());
+            statement.setString(2,hotCoffee.getName());
+           statement.setString(3,hotCoffee.getDescription());
+
+            statement.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public  HotCoffee updateHotCoffeeById(HotCoffee hotCoffee ){
+       HotCoffee returnval  = null;
+        try{
+            PreparedStatement statement = conn.prepareStatement("Update HotCoffee set name= ?,description = ? where id = ?");
+            statement.setString(2, hotCoffee.getName());
+            statement.setString(3, hotCoffee.getDescription());
+            ResultSet rs = statement.executeQuery();
+            returnval = new HotCoffee((rs.getInt("id")),(rs.getString("name")),(rs.getString("description")));
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return returnval;
+    }}
+//
