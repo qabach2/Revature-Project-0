@@ -80,10 +80,13 @@ public class IcedCoffeeRepository {
         IcedCoffee returnvalue  = null;
         try{
             PreparedStatement statement = conn.prepareStatement("Update IcedCoffee set name_of_coffee = ?,about = ? where id_number = ?");
-            statement.setString(2, icedCoffee.getName_of_coffee());
-            statement.setString(3, icedCoffee.getAbout());
-            ResultSet rs = statement.executeQuery();
-            returnvalue = new IcedCoffee((rs.getInt("id_number")),(rs.getString("name_of_coffee")),(rs.getString("about")));
+            statement.setString(1, icedCoffee.getName_of_coffee());
+            statement.setString(2, icedCoffee.getAbout());
+            statement.setInt(3, icedCoffee.getId_number());
+
+
+             statement.executeUpdate();
+
         }catch(SQLException e){
             e.printStackTrace();
         }

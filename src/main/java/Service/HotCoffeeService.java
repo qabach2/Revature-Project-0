@@ -31,7 +31,7 @@ public class HotCoffeeService {
 
      return hcr.getAllHotCoffees();
  }
- public HotCoffee getHotCoffeesByName(int id){
+ public HotCoffee getHotCoffeesById(int id){
   return hcr.getHotCoffeesById(id);
  }
 

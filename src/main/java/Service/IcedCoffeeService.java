@@ -24,9 +24,9 @@ public class IcedCoffeeService {
 
         return icr.getAllIcedCoffees();
     }
-//    public IcedCoffee getAllIcedCoffeesByCoffeeName(){
-//        return icr.getAllIcedCoffeesByName(name);
-//    }
+    public IcedCoffee getAllIcedCoffeesById( int id){
+        return icr.getAllIcedCoffeesByName(id);
+    }
 
     public void removeIcedCoffeeByIdNumber(int id ){
         icr.removeIcedCoffeeById(id);

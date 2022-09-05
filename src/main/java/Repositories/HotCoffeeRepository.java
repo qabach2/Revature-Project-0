@@ -34,6 +34,7 @@ public class HotCoffeeRepository {
            PreparedStatement statement = conn.prepareStatement("Select * from HotCoffee where id = ?");
            statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
+            rs.next();
             loadedHotCoffee = new HotCoffee((rs.getInt("id")),(rs.getString("name")),(rs.getString("description")));
         }catch(SQLException e){
             e.printStackTrace();
@@ -69,10 +70,11 @@ public class HotCoffeeRepository {
        HotCoffee returnval  = null;
         try{
             PreparedStatement statement = conn.prepareStatement("Update HotCoffee set name= ?,description = ? where id = ?");
-            statement.setString(2, hotCoffee.getName());
-            statement.setString(3, hotCoffee.getDescription());
-            ResultSet rs = statement.executeQuery();
-            returnval = new HotCoffee((rs.getInt("id")),(rs.getString("name")),(rs.getString("description")));
+            statement.setString(1, hotCoffee.getName());
+            statement.setString(2, hotCoffee.getDescription());
+            statement.setInt(3, hotCoffee.getId());
+            statement.executeUpdate();
+
         }catch(SQLException e){
             e.printStackTrace();
         }
