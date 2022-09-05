@@ -28,7 +28,7 @@ public class HotCoffeeRepository {
         return allHotCoffees;
     }
 
-    public HotCoffee getAllHotCoffees(int id) {
+    public HotCoffee getHotCoffeesById(int id) {
         HotCoffee loadedHotCoffee = null;
         try{
            PreparedStatement statement = conn.prepareStatement("Select * from HotCoffee where id = ?");

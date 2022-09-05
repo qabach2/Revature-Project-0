@@ -39,19 +39,19 @@ public class IcedCoffeeRepository {
         return allIcedCoffees;
     }
 
-//    public IcedCoffee getAllIcedCoffeesById(int id) {
-//        IcedCoffee loadedIcedCoffee = null;
-//        try{
-//            PreparedStatement statement = conn.prepareStatement("Select * from IcedCoffee where id = ?");
-//            statement.setInt(1, id);
-//            ResultSet rs = statement.executeQuery();
-//            loadedIcedCoffee = new IcedCoffee((rs.getInt("id_number")),(rs.getString("name_of_coffee")),(rs.getString("about")));
-//        }catch(SQLException e){
-//            e.printStackTrace();
-//
-//        }
-//        return loadedIcedCoffee;
-//    }
+    public IcedCoffee getAllIcedCoffeesByName(int id) {
+        IcedCoffee loadedIcedCoffee = null;
+        try{
+            PreparedStatement statement = conn.prepareStatement("Select * from IcedCoffee where id = ?");
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+            loadedIcedCoffee = new IcedCoffee((rs.getInt("id_number")),(rs.getString("name_of_coffee")),(rs.getString("about")));
+        }catch(SQLException e){
+            e.printStackTrace();
+
+        }
+        return loadedIcedCoffee;
+    }
 
     public void removeIcedCoffeeById(int id ){
         try{

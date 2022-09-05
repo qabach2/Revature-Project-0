@@ -15,7 +15,7 @@ public class MainMenu {
         HotCoffeeService hotCoffeeService = new HotCoffeeService();
         IcedCoffeeService icedCoffeeService = new IcedCoffeeService();
         while (HaveCoffee) {
-            System.out.println("SELECT ONE: ( all coffees ,  add coffee, remove coffee, update coffee ,exit )");
+            System.out.println("SELECT ONE: ( all coffees , add coffee, remove coffee, update coffee ,exit )");
             Scanner ab = new Scanner(System.in);
             String userInput = ab.nextLine();
 //  TO GET ALL COFFES FROM DATA BASE
@@ -27,6 +27,22 @@ public class MainMenu {
                 } else if (userInput.equals("iced coffees")) {
                     System.out.println(icedCoffeeService.getAllIcedCoffees());
                 }}
+//  TO GET ALL COFFEeS BY IDS
+//            else if(userInput.equals("get all coffees by id")){
+//                System.out.println("hot coffees, iced coffees");
+//                userInput = ab.nextLine();
+//                if(userInput.equals("hot coffees")) {
+//                    System.out.println("input hot coffee id:");
+//                    int UserInputId = Integer.parseInt(ab.nextLine());
+//                    System.out.println(hotCoffeeService.getHotCoffeesById());
+//                } else if (userInput.equals("iced coffees")) {
+//                    System.out.println("input iced coffee id:");
+//                    int UserInputId = Integer.parseInt(ab.nextLine());
+//                    System.out.println(icedCoffeeService.getAllIcedCoffeesByCoffeeName());
+//
+//                }
+//
+//            }
 //  TO ADD COFFEE TO LIST
             else if (userInput.equals("add coffee")) {
                 System.out.println("hot coffees, iced coffees");
@@ -50,7 +66,7 @@ public class MainMenu {
                     IcedCoffee icedCoffee = new IcedCoffee(UserInputId, UserInputName, UserInputDescription);
                     icedCoffeeService.addIcedCoffee(icedCoffee);
                 } else
-                    System.out.println("SELECT ONE: ( all coffees ,  add coffee, remove coffee, update coffee ,exit )");
+                    System.out.println("SELECT ONE: ( all coffees , get all coffees by id, add coffee, remove coffee, update coffee ,exit )");
             }
 // TO REMOVE COFFEE
             else if (userInput.equals("remove coffee")) {
@@ -66,12 +82,12 @@ public class MainMenu {
                     icedCoffeeService.removeIcedCoffeeByIdNumber(UserInputId);
 //                    IcedCoffeeService.removeIcedCoffeeById();
                 } else
-                    System.out.println("SELECT ONE: ( all coffees ,  add coffee, remove coffee, update coffee ,exit )");
+                    System.out.println("SELECT ONE: ( all coffees , get all coffees by id,  add coffee, remove coffee, update coffee ,exit )");
 //TO UPDATE COFFEE
             } else if (userInput.equals("update coffee")) {
                 System.out.println("hot coffee, iced coffee");
                 userInput = ab.nextLine();
-                if (userInput.equals("hot coffees")) {
+                if (userInput.equals("hot coffee")) {
                     System.out.println("please add the name");
                     String UserInputName = ab.nextLine();
                     System.out.println("please add new name");
@@ -91,7 +107,7 @@ public class MainMenu {
                     icedCoffeeService.updateIcedCoffeeById(icedCoffee);
 //                    IcedCoffeeService.updateIcedCoffeeById();
                 } else
-                    System.out.println("SELECT ONE: ( all coffees ,  add coffee, remove coffee, update coffee ,exit )");
+                    System.out.println("SELECT ONE: ( all coffees , get all coffees by id, add coffee, remove coffee, update coffee ,exit )");
             }
              else if(userInput.equals("exit")){
                 HaveCoffee=false;
