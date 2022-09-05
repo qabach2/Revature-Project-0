@@ -10,7 +10,7 @@ import java.util.List;
 
 public class HotCoffeeRepository {
     Connection conn;
-    public void HotCoffeeRepository() throws SQLException {
+    public  HotCoffeeRepository() throws SQLException {
         conn = ConnectionUtil.getConnection();
     }
     public List<HotCoffee> getAllHotCoffees(){
@@ -28,7 +28,7 @@ public class HotCoffeeRepository {
         return allHotCoffees;
     }
 
-    public HotCoffee getAllHotCoffeesById(int id) {
+    public HotCoffee getAllHotCoffees(int id) {
         HotCoffee loadedHotCoffee = null;
         try{
            PreparedStatement statement = conn.prepareStatement("Select * from HotCoffee where id = ?");
@@ -44,7 +44,7 @@ public class HotCoffeeRepository {
 
     public void removeHotCoffeeById(int id ){
         try{
-            PreparedStatement statement = conn.prepareStatement("Delete * from HotCoffee where id = ?");
+            PreparedStatement statement = conn.prepareStatement("Delete from HotCoffee where id = ?");
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
         }catch(SQLException e){

@@ -3,9 +3,9 @@ package Entity;
 public class HotCoffee {
 
 
-        private int id;
-        private String name;
-        private String description;
+        public int id;
+        public String name;
+        public String description;
 
 
 
@@ -20,6 +20,7 @@ public class HotCoffee {
         }
 
         public void setId(int id) {
+
             this.id = id;
         }
 

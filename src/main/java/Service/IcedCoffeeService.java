@@ -1,64 +1,49 @@
 package Service;
 
+import Entity.HotCoffee;
+import Entity.IcedCoffee;
 import Repositories.HotCoffeeRepository;
 import Repositories.IcedCoffeeRepository;
 import Util.ConnectionUtil;
 
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 public class IcedCoffeeService {
-    HotCoffeeRepository hcr;
-    IcedCoffeeRepository icr;
-
-    Connection conn = ConnectionUtil.getConnection();
-
-    public IcedCoffeeService() {
-
+//    HotCoffeeRepository hcr;
+     IcedCoffeeRepository icr;
+    public IcedCoffeeService() throws  SQLException{
+        icr = new IcedCoffeeRepository();
     }
 
-
-
-
-    public void IcedCoffeeRepository() throws SQLException {
-        icr = new IcedCoffeeRepository();}
-
+//    Connection conn = ConnectionUtil.getConnection();
     public IcedCoffeeService( IcedCoffeeRepository icr) throws SQLException {
         this.icr = icr;
 
     }
-//
 
-    public static void removeIcedCoffeeById() {
+          //
+    public List<IcedCoffee> getAllIcedCoffees() {
+
+        return icr.getAllIcedCoffees();
     }
-
-    public static boolean addIcedCoffeeByName(){
-        return false;
-    }
-    public static boolean getAllIcedCoffeesByCoffeeName(){
-
-
-        return false;
-    }
-    public static void updateIcedCoffeeById() {
-    }
-
-
-
-//    public void addCoffee(String name, int id) throws SQLException {
-//        Coffee existingCoffee = cr.getcoffeeById(id);
-//        if(existingPainting == null) {
-//            Painting newPainting = new Painting(title, id);
-//            pr.addPainting(newPainting);
-//        }else{
-////            do nothing
-//        }
-//        conn.commit();
+//    public IcedCoffee getIcedCoffee(){
+//        return icr.getAllIcedCoffees();
 //    }
-//    public List<Painting> getAllPaintingsByArtistName(String name){
-//        int id = as.getArtistIDFromName(name);
-//        return pr.getAllPaintingsByArtistID(id);
-//    }
-//}
+
+    public void removeIcedCoffeeByIdNumber(int id ){
+        icr.removeIcedCoffeeById(id);
+    }
+    public IcedCoffee updateIcedCoffeeById(IcedCoffee icedCoffee){
+        return icr.updateHotCoffeeById(icedCoffee);
+    }
+    public void addIcedCoffee(IcedCoffee coffee) {
+        icr.addIcedCoffee(coffee);
+    }
 }
+
+
+//
 

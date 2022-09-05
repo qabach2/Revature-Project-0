@@ -11,89 +11,97 @@ import java.util.Scanner;
 public class MainMenu {
     public static void main(String[] args) throws SQLException {
         Connection connection = ConnectionUtil.getConnection();
-
+        boolean HaveCoffee = true;
         HotCoffeeService hotCoffeeService = new HotCoffeeService();
         IcedCoffeeService icedCoffeeService = new IcedCoffeeService();
-//        IcedCoffee icedCoffee =new IcedCoffee(2,"ice coffee","medium");
-        boolean HaveCoffee = true;
         while (HaveCoffee) {
             System.out.println("SELECT ONE: ( all coffees ,  add coffee, remove coffee, update coffee ,exit )");
             Scanner ab = new Scanner(System.in);
-            String UserInput = ab.nextLine();
-            if (UserInput.equals("all coffees")) {
+            String userInput = ab.nextLine();
+//  TO GET ALL COFFES FROM DATA BASE
+            if (userInput.equals("all coffees")) {
                 System.out.println("hot coffees, iced coffees");
-                UserInput = ab.nextLine();
-                if (UserInput.equals("hot Coffees")){
+                userInput = ab.nextLine();
+                if (userInput.equals("hot coffees")) {
                     System.out.println(hotCoffeeService.getAllHotCoffees());
-                }else if (UserInput.equals("iced coffees")) {
-                    System.out.println(IcedCoffeeService.getAllIcedCoffeesByCoffeeName());
+                } else if (userInput.equals("iced coffees")) {
+                    System.out.println(icedCoffeeService.getAllIcedCoffees());
                 }}
-
-             else if (UserInput.equals("add coffee")) {
+//  TO ADD COFFEE TO LIST
+            else if (userInput.equals("add coffee")) {
                 System.out.println("hot coffees, iced coffees");
-                UserInput = ab.nextLine();
-                if (UserInput.equals("hot Coffees")){
+               userInput = ab.nextLine();
+                if (userInput.equals("hot coffees")) {
                     System.out.println("please add the name");
-                   String UserInputName =ab.nextLine();
-                    System.out.println("please add discription");
-                    String UserInputDescription =ab.nextLine();
+                    String UserInputName = ab.nextLine();
+                    System.out.println("please add description");
+                    String UserInputDescription = ab.nextLine();
                     System.out.println("please add id");
                     int UserInputId = Integer.parseInt(ab.nextLine());
-                    HotCoffee hotCoffee = new HotCoffee(UserInputId,UserInputName,UserInputDescription);
+                    HotCoffee hotCoffee = new HotCoffee(UserInputId, UserInputName, UserInputDescription);
                     hotCoffeeService.addHotCoffee(hotCoffee);
-                }else if (UserInput.equals("iced coffees")) {
-                    IcedCoffeeService.addIcedCoffeeByName();
-            }}
-            else if (UserInput.equals("remove coffee")) {
-                System.out.println("hot coffees, iced coffees");
-                UserInput = ab.nextLine();
-                if (UserInput.equals("hot Coffees")){
+                } else if (userInput.equals("iced coffees")) {
+                    System.out.println("please add the name of coffee");
+                    String UserInputName = ab.nextLine();
+                    System.out.println("please add about");
+                    String UserInputDescription = ab.nextLine();
                     System.out.println("please add id");
+                    int UserInputId = Integer.parseInt(ab.nextLine());
+                    IcedCoffee icedCoffee = new IcedCoffee(UserInputId, UserInputName, UserInputDescription);
+                    icedCoffeeService.addIcedCoffee(icedCoffee);
+                } else
+                    System.out.println("SELECT ONE: ( all coffees ,  add coffee, remove coffee, update coffee ,exit )");
+            }
+// TO REMOVE COFFEE
+            else if (userInput.equals("remove coffee")) {
+                System.out.println("hot coffee, iced coffee");
+                userInput = ab.nextLine();
+                if (userInput.equals("hot coffee")) {
+                    System.out.println("please add id_number");
                     int UserInputId = Integer.parseInt(ab.nextLine());
                     hotCoffeeService.removeHotCoffeeById(UserInputId);
-                }else if (UserInput.equals("iced coffees")) {
-                    IcedCoffeeService.removeIcedCoffeeById();
-                }}
-
-            else if (UserInput.equals("update coffee")) {
-                System.out.println("hot coffees, iced coffees");
-                UserInput = ab.nextLine();
-                if (UserInput.equals("hot Coffees")){
+                } else if (userInput.equals("iced coffee")) {
+                    System.out.println("please add id_number");
+                    int UserInputId = Integer.parseInt(ab.nextLine());
+                    icedCoffeeService.removeIcedCoffeeByIdNumber(UserInputId);
+//                    IcedCoffeeService.removeIcedCoffeeById();
+                } else
+                    System.out.println("SELECT ONE: ( all coffees ,  add coffee, remove coffee, update coffee ,exit )");
+//TO UPDATE COFFEE
+            } else if (userInput.equals("update coffee")) {
+                System.out.println("hot coffee, iced coffee");
+                userInput = ab.nextLine();
+                if (userInput.equals("hot coffees")) {
                     System.out.println("please add the name");
-                    String UserInputName =ab.nextLine();
-                    System.out.println("please add name");
-                    String UserInputDescription =ab.nextLine();
+                    String UserInputName = ab.nextLine();
+                    System.out.println("please add new name");
+                    String UserInputDescription = ab.nextLine();
                     System.out.println("please add id");
                     int UserInputId = Integer.parseInt(ab.nextLine());
-                    HotCoffee hotCoffee = new HotCoffee(UserInputId,UserInputName,UserInputDescription);
-
+                    HotCoffee hotCoffee = new HotCoffee(UserInputId, UserInputName, UserInputDescription);
                     hotCoffeeService.updateHotCoffeeById(hotCoffee);
-                }else if (UserInput.equals("iced coffees")) {
-                    IcedCoffeeService.updateIcedCoffeeById();
-                }}
-
-             else if(UserInput.equals("exit")){
+                } else if (userInput.equals("iced coffees")) {
+                    System.out.println("please add the name_of_coffee");
+                    String UserInputName = ab.nextLine();
+//                    System.out.println("please add about");
+                    String UserInputDescription = ab.nextLine();
+                    System.out.println("please add id");
+                    int UserInputId = Integer.parseInt(ab.nextLine());
+                    IcedCoffee icedCoffee = new IcedCoffee(UserInputId, UserInputName, UserInputDescription);
+                    icedCoffeeService.updateIcedCoffeeById(icedCoffee);
+//                    IcedCoffeeService.updateIcedCoffeeById();
+                } else
+                    System.out.println("SELECT ONE: ( all coffees ,  add coffee, remove coffee, update coffee ,exit )");
+            }
+             else if(userInput.equals("exit")){
                 HaveCoffee=false;
                System.out.println("THANK YOU!!");}
            else{
                 System.out.println("see you next time ");
-            }
+            }}}}
 
 //
-//            } else if (UserInput.equals("remove coffee")) {
-//                System.out.println(drinkService.removeCoffeeById());
 //
-//            } else if (UserInput.equals("update coffee")) {
-//                System.out.println(drinkService.updateCoffeeByName());
-//            }else if(UserInput.equals("exit")){
-//                HaveCoffee=false;
-//                System.out.println("THANK YOU!!");}
-//            else{
-//                System.out.println("see you next time ");
-
-
-        }
-    }}
 
 
 
